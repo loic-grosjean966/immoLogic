@@ -49,6 +49,11 @@ class User
      */
     private $annonces;
 
+    /**
+     * @ORM\Column(type="string", length=4096)
+     */
+    private $password;
+
     public function __construct()
     {
         $this->annonces = new ArrayCollection();
@@ -146,6 +151,18 @@ class User
                 $annonce->setAuthor(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
 
         return $this;
     }

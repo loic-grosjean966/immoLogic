@@ -48,6 +48,11 @@ class Annonce
      */
     private $author;
 
+    /**
+     * @ORM\Column(type="smallint")
+     */
+    private $rooms;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,6 +126,18 @@ class Annonce
     public function setAuthor(?User $author): self
     {
         $this->author = $author;
+
+        return $this;
+    }
+
+    public function getRooms(): ?int
+    {
+        return $this->rooms;
+    }
+
+    public function setRooms(int $rooms): self
+    {
+        $this->rooms = $rooms;
 
         return $this;
     }
