@@ -52,4 +52,13 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+    /**
+     * @Route("/Incription", name="incription")
+     */
+    public function register()
+    {
+        return $this->render('registration/register.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
 }
