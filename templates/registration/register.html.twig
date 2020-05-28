@@ -27,9 +27,14 @@
                     {# Champ email #}
                     {{ form_row(registrationForm.email) }}
                     {# Champ mot de passe #}
-                    {{ form_row(registrationForm.plainPassword) }}
-                    {# Champ pseudonyme #}
-                    {{ form_row(registrationForm.pseudonym) }}
+                    {{ form_row(registrationForm.password) }}
+                    {# Champs nom et prénom #}
+                    {{ form_row(registrationForm.name) }}
+                    {{ form_row(registrationForm.firstname) }}
+                    {# champ adresse #}
+                    {{ form_row(registrationForm.address) }}
+                    {# champ numéro de téléphone #}
+                    {{ form_row(registrationForm.telephone) }}
 
                     {# Affichage du recaptcha #}
                     <div class="form-group my-4">

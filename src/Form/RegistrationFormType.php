@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Regex;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class LoginFormType extends AbstractType
+class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -86,13 +86,17 @@ class LoginFormType extends AbstractType
                         'pattern' => "/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ !\"\#\$%&\'\(\)*+,\-.\/:;<=>?@[\\^\]_`\{|\}~])^.{8,4096}$/",
                         'message' => 'Votre mot de passe doit contenir obligatoirement une minuscule, une majuscule, un chiffre et un caractère spécial'
                     ])
-                ]
+                ],
             ])
             ->add('address', TextType::class, [
-
+                'label' => 'Adresse',
             ])
             ->add('telephone', TextType::class, [
-
+                'label' => 'Téléphone',
+                'constraints' => [
+                    'min' => 10,
+                    'max' => 15,
+                ]
             ])
 
             // Bouton de validation
@@ -109,6 +113,7 @@ class LoginFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
+            'novalidate' => 'novalidate'
         ]);
     }
 }

@@ -79,7 +79,7 @@ class RegistrationController extends AbstractController
 
                 // Création d'un email d'activation
                 $email = (new TemplatedEmail())
-                    ->from(new Address('noreply@leblogdebatman.fr', 'Batman'))
+                    ->from(new Address('noreply@immologic.fr', 'Immo Logic'))
                     ->to($user->getEmail())
                     ->subject('Activation de votre compte')
                     ->htmlTemplate('security/emails/activation.html.twig')
