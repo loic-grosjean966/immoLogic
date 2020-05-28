@@ -1,6 +1,6 @@
 /* Toute la page */
 body{
-    background-color: #1A1D45;
+    background-color: #F0F3F4;
     color: #F5F7F9;
     font-family: "Roboto", sans-serif;
 }
@@ -8,7 +8,7 @@ body{
 
 /* Navbar principale */
 .main-navbar{
-    background-color: black !important;
+    background-color: #633974 !important;
 }
 
 .main-navbar .main-navbar-logo{
@@ -19,7 +19,7 @@ body{
 
 /* Classes génériques */
 .bg-black{
-    background-color: black;
+    background-color: #633974;
 }
 
 
@@ -31,8 +31,8 @@ body{
 
 /* Menus paginations */
 .pagination .page-item .page-link{
-    background-color: black;
-    color: #F5F7F9;
+    background-color: #633974;
+    color: #Ffffff;
 }
 
 .pagination .page-item.disabled{

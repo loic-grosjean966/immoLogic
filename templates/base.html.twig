@@ -2,11 +2,37 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        {# Le titre sera composé du titre de la page, suivi d'un tiret, suivi du nom du site déclaré dans le fichier config/packages/twig.yaml #}
+        <title></title>
+        {# Inclusions des fichiers CSS généraux du site #}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark main-navbar">
+
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item main-button">
+                <a class="nav-link" href=""><i class="fas fa-home mx-1"></i>Immo-Logic !</a>
+            </li>
+            <li class="nav-item dropdown second-button">
+                <a class="nav-link dropdown-toggle" href="#" id="blog-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-newspaper mr-1"></i>Appartement
+                </a>
+        <div class="dropdown-menu" aria-labelledby="blog-dropdown">
+            <a class="dropdown-item" href="">A louer</a>
+
+        <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="">A vendre</a>
+        </ul>
+
+        </nav>
+
+    <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ asset('js/popper.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     </body>
 </html>
