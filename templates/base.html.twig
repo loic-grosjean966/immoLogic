@@ -16,7 +16,7 @@
 
         <ul class="navbar-nav mr-auto">
             <li class="nav-item main-button">
-                <a class="nav-link" href=""><i class="mx-1"></i>Immo-Logic !</a>
+                <a class="nav-link" href="{{ path('main') }}"><i class="mx-1"></i>Immo-Logic !</a>
             </li>
             <li class="nav-item dropdown second-button">
                 <a class="nav-link dropdown-toggle" href="#" id="blog-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -35,7 +35,12 @@
             <a class="dropdown-item" href="{{ path('houseRent') }}">A louer</a>
 
         <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="{{ path('houseSell') }}">A vendre</a>
+            <a class="dropdown-item" href="{{ path('houseSell') }}">A vendra</a>
+
+
+            <li class="nav-item">
+                <a class="nav-link" href=""><i class="fas fa-user-plus mx-1"></i>Inscription</a>
+            </li>
         </ul>
 
         </nav>
