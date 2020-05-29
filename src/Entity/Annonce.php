@@ -53,6 +53,11 @@ class Annonce
      */
     private $rooms;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $annonceType;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -138,6 +143,18 @@ class Annonce
     public function setRooms(int $rooms): self
     {
         $this->rooms = $rooms;
+
+        return $this;
+    }
+
+    public function getAnnonceType(): ?bool
+    {
+        return $this->annonceType;
+    }
+
+    public function setAnnonceType(bool $annonceType): self
+    {
+        $this->annonceType = $annonceType;
 
         return $this;
     }
