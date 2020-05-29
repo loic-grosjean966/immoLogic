@@ -91,6 +91,15 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('address', TextType::class, [
                 'label' => 'Adresse',
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez renseigner une adresse postale'
+                    ]),
+                    new Regex([
+                        'pattern' => "/^$/",
+                        'message' => 'Votre adresse postale est invalide'
+                    ])
+                ]
             ])
             ->add('telephone', TelType::class, [
                 'label' => 'Téléphone',
