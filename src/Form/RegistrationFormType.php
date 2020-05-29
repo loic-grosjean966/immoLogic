@@ -34,7 +34,7 @@ class RegistrationFormType extends AbstractType
                     ])
                 ],
             ])
-
+            //Champ nom de famille
             ->add('name', TextType::class, [
                 'label' => 'Nom de famille',
                 'constraints' => [
@@ -49,6 +49,7 @@ class RegistrationFormType extends AbstractType
                     ])
                 ]
             ])
+            //Champ prénom
             ->add('firstname', TextType::class, [
                 'label' => 'Prénom',
                 'constraints' => [
@@ -63,6 +64,7 @@ class RegistrationFormType extends AbstractType
                     ])
                 ]
             ])
+            //champ de mot de passe et de confirmation mot de passe
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Le mot de passe ne correspond pas à sa confirmation',
@@ -89,18 +91,26 @@ class RegistrationFormType extends AbstractType
                     ])
                 ],
             ])
+            //Adresse postale
             ->add('address', TextType::class, [
                 'label' => 'Adresse',
                 'constraints' => [
+                    new Length([
+                        'min' => 15,
+                        'max' => 60,
+                        'minMessage' => 'Votre adresse doit faire au moins {{ limit }} carctères',
+                        'maxMessage' => 'Votre adresse doit faire au maximum {{ limit }} caractères'
+                    ]),
                     new NotBlank([
                         'message' => 'Veuillez renseigner une adresse postale'
                     ]),
                     new Regex([
-                        'pattern' => "/^$/",
+                        'pattern' => "/^([0-9a-z'àâéèêôùûçÀÂÉÈÔÙÛÇ\s-]{1,60})$/i",
                         'message' => 'Votre adresse postale est invalide'
                     ])
                 ]
             ])
+            //Numéro de téléphone
             ->add('telephone', TelType::class, [
                 'label' => 'Téléphone',
                 'constraints' => [
