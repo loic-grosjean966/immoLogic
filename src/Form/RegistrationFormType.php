@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Validator\Constraints\Email;
@@ -91,11 +92,22 @@ class RegistrationFormType extends AbstractType
             ->add('address', TextType::class, [
                 'label' => 'Adresse',
             ])
-            ->add('telephone', TextType::class, [
+            ->add('telephone', TelType::class, [
                 'label' => 'Téléphone',
                 'constraints' => [
-                    'min' => 10,
-                    'max' => 15,
+                    new Length([
+                        'min' => 10,
+                        'max' => 15,
+                        'minMessage' => 'Votre numéro de téléphone doit contenir au moins 10 caractères',
+                        'maxMessage' => 'Votre numéro de téléphone doit contenir au maximum 15 caractères'
+                    ]),
+                    new Regex([
+                        'pattern' => "/^(\d{2}[ -.]?){4}\d{2}$/",
+                        'message' => 'Votre numéro de téléphone est invalide'
+                    ]),
+                    new NotBlank([
+                        'message' => 'Veuillez renseigner votre numéro de téléphone'
+                    ])
                 ]
             ])
 
