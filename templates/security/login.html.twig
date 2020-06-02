@@ -6,7 +6,16 @@
 
 {% block body %}
 
-     {# Formulaire de connexion #}
+    <div class="container-fluid">
+        <div class="row">
+            <h1 class="col-12 text-center my-5">Se connecter</h1>
+        </div>
+
+
+
+
+
+        {# Formulaire de connexion #}
      <div class="row">
         <div class="col-12 col-md-4 offset-md-4">
 
@@ -33,13 +42,14 @@
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
                 {# Bouton de validation #}
-                <input type="submit" class="btn btn-outline-primary col-12">
+                <input type="submit" class="btn btn-outline-primary col-12" value="Se connecter">
             </form>
-
-            {# Lien vers la page de mot de passe perdu #}
-            <p class="my-3"><a href="{{ path('app_forgot_password_request') }}">J'ai perdu mon mot de passe</a></p>
 
         </div>
     </div>
+
+    </div>
+
+     
     
 {% endblock %}
