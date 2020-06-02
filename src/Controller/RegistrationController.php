@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Recaptcha\RecaptchaValidator;
-use DateTime;
+use \DateTime;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormError;
@@ -23,12 +23,12 @@ class RegistrationController extends AbstractController
      *
      * @Route("/creer-un-compte/", name="app_register")
      */
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, RecaptchaValidator $recaptcha, MailerInterface $mailer): Response
+    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, RecaptchaValidator $recaptcha): Response
     {
 
         // Redirige de force vers l'accueil si l'utilisateur est déjà connecté
-        if ($this->getUser()) {
-            return $this->redirectToRoute('main_home');
+        if($this->getUser()) {
+            return $this->redirectToRoute('accueil');
         }
 
         // Création d'un nouvel objet "User"
@@ -61,39 +61,20 @@ class RegistrationController extends AbstractController
                     ->setPassword(
                         $passwordEncoder->encodePassword(
                             $user,
-                            $form->get('password')->getData()
+                            $form->get('plainPassword')->getData()
                         )
                     )
-                    // Date actuelle
-                    ->setRegistrationDate(new DateTime())
-                    // Compte non activé
-                    ->setActivated(false)
-                    // md5 aléatoire comme token d'activation
-                    ->setActivationToken( md5( random_bytes(100) ) )
                 ;
+                
 
                 // Sauvegarde du nouveau compte grâce au manager général des entités
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($user);
                 $entityManager->flush();
 
-                // Création d'un email d'activation
-                $email = (new TemplatedEmail())
-                    ->from(new Address('noreply@immologic.fr', 'Immo Logic'))
-                    ->to($user->getEmail())
-                    ->subject('Activation de votre compte')
-                    ->htmlTemplate('security/emails/activation.html.twig')
-                    ->textTemplate('security/emails/activation.txt.twig')
-                    ->context([
-                        'user' => $user
-                    ])
-                ;
-
-                // Envoi de l'email
-                $mailer->send($email);
 
                 // Message flash de succès
-                $this->addFlash('success', 'Votre compte a été créé avec succès ! Un email vous a été envoyé pour activer votre compte.');
+                $this->addFlash('success', 'Votre compte a été créé avec succès !');
 
                 // Redirection de l'utilisateur vers la page de connexion
                 return $this->redirectToRoute('app_login');

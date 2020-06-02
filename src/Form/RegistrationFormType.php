@@ -65,7 +65,7 @@ class RegistrationFormType extends AbstractType
                 ]
             ])
             //champ de mot de passe et de confirmation mot de passe
-            ->add('password', RepeatedType::class, [
+            ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Le mot de passe ne correspond pas à sa confirmation',
                 'first_options' => [
@@ -105,7 +105,7 @@ class RegistrationFormType extends AbstractType
                         'message' => 'Veuillez renseigner une adresse postale'
                     ]),
                     new Regex([
-                        'pattern' => "/^([0-9a-z'àâéèêôùûçÀÂÉÈÔÙÛÇ\s-]{1,60})$/i",
+                        'pattern' => "/^([0-9a-z'àâéèêôùûçÀÂÉÈÔÙÛÇ\s-]{15,60})$/i",
                         'message' => 'Votre adresse postale est invalide'
                     ])
                 ]
@@ -144,7 +144,10 @@ class RegistrationFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => User::class,
-            'novalidate' => 'novalidate'
+            'attr' => [
+                'novalidate' => 'novalidate'
+            ]
+            
         ]);
     }
 }

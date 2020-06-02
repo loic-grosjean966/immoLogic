@@ -54,7 +54,7 @@ class AnnonceFormType extends AbstractType
                 ]
             ])
             ->add('price', MoneyType::class, [
-                'divisor' => 1,
+                'divisor' => 100,
             ])
             ->add('photo', FileType::class, [
                 'label' => 'Sélectionnez une nouvelle photo',
