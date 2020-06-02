@@ -33,7 +33,7 @@ class Annonce
     private $publicationDate;
 
     /**
-     * @ORM\Column(type="string", length=6)
+     * @ORM\Column(type="string", length=6, nullable=false)
      */
     private $price;
 
@@ -53,10 +53,10 @@ class Annonce
      */
     private $rooms;
 
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $annonceType;
+    public function __toString()
+    {
+        return $this->price;
+    }
 
     public function getId(): ?int
     {
@@ -143,18 +143,6 @@ class Annonce
     public function setRooms(int $rooms): self
     {
         $this->rooms = $rooms;
-
-        return $this;
-    }
-
-    public function getAnnonceType(): ?bool
-    {
-        return $this->annonceType;
-    }
-
-    public function setAnnonceType(bool $annonceType): self
-    {
-        $this->annonceType = $annonceType;
 
         return $this;
     }
