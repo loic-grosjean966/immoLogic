@@ -46,6 +46,7 @@ class User implements UserInterface
      */
     private $telephone;
 
+
     /**
      * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="author")
      */
@@ -60,6 +61,11 @@ class User implements UserInterface
      * 
      */
     private $plainPassword;
+
+    /**
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
 
     public function __construct()
     {
@@ -146,7 +152,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->pseudonym;
+        return (string) $this->email;
     }
 
     /**

@@ -1,0 +1,8 @@
+<h1>Modification de mot de passe</h1>
+
+<p>
+    Bonjour, pour modifier votre mot de passe, vous devez cliquer sur le lien suivant :
+    {# Utilisation de url() plutôt que de path() car le lien est envoyé dans un email, et doit donc être absolu pour être fonctionnel #}
+    <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">Modifier mon mot de passe</a>
+    Ce lien expirera dans {{ tokenLifetime|date('g') }} heure(s).
+</p>

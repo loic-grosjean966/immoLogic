@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AnnonceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=AnnonceRepository::class)
@@ -52,6 +53,29 @@ class Annonce
      * @ORM\Column(type="smallint")
      */
     private $rooms;
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Gedmo\Slug(fields={"title"})
+     */
+    private $slug;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $type;
+
+public function getSlug(): ?string
+{
+    return $this->slug;
+}
+
+public function setSlug(string $slug): self
+{
+    $this->slug = $slug;
+
+    return $this;
+}
 
     public function __toString()
     {
@@ -143,6 +167,18 @@ class Annonce
     public function setRooms(int $rooms): self
     {
         $this->rooms = $rooms;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200529094310 extends AbstractMigration
+final class Version20200602143021 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,8 @@ final class Version20200529094310 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE annonce ADD annonce_type TINYINT(1) NOT NULL');
+        $this->addSql('ALTER TABLE annonce ADD slug VARCHAR(255) NOT NULL, ADD type VARCHAR(255) NOT NULL');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_F65593E5989D9B62 ON annonce (slug)');
     }
 
     public function down(Schema $schema) : void
@@ -30,6 +31,7 @@ final class Version20200529094310 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE annonce DROP annonce_type');
+        $this->addSql('DROP INDEX UNIQ_F65593E5989D9B62 ON annonce');
+        $this->addSql('ALTER TABLE annonce DROP slug, DROP type');
     }
 }
