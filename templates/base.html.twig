@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
         {% block stylesheets %}{% endblock %}
     </head>
-    
+
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark main-navbar">
 
@@ -39,28 +39,32 @@
         <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="{{ path('houseSell') }}">A vendre</a>
         </ul>
-
+        
         <ul class="navbar-nav ml-auto pr-2">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('new_annonce') }}"><i class="fas fa-newspaper mr-1"></i>Créer une annonce</a>
-            </li>
-            <li class="nav-item dropdown second-button">
-                <a class="nav-link dropdown-toggle" href="#" id="blog-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user-cog mr-1"></i>Compte
-                </a>
-                <div class="dropdown-menu" aria-labelledby="blog-dropdown">
-                    <a class="dropdown-item" href="#"><i class="far fa-id-card mr-1"></i>Mon profil</a>
+            {% if is_granted('ROLE_USER') %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('new_annonce') }}"><i class="fas fa-newspaper mr-1"></i>Créer une annonce</a>
+                </li>
+                <li class="nav-item dropdown second-button">
+                    <a class="nav-link dropdown-toggle" href="#" id="blog-dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user-cog mr-1"></i>Compte
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="blog-dropdown">
+                        <a class="dropdown-item" href="#"><i class="far fa-id-card mr-1"></i>Mon profil</a>
 
-                <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{{ path('app_logout') }}"><i class="fas fa-sign-out-alt mr-1"></i>Se déconnecter</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_register') }}"><i class="fas fa-user-plus mx-1"></i>Inscription</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('app_login') }}"><i class="fas fa-user mx-1"></i>Se connecter</a>
-            </li>
+                    <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ path('app_logout') }}"><i class="fas fa-sign-out-alt mr-1"></i>Se déconnecter</a>
+                    </div>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_register') }}"><i class="fas fa-user-plus mx-1"></i>Inscription</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_login') }}"><i class="fas fa-user mx-1"></i>Se connecter</a>
+                </li>
+            {% endif %}
+            
         </ul>
 
         </nav>

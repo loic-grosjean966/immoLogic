@@ -60,4 +60,12 @@ class AnnonceController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /**
+     * @Route("/vue-annonce/", name="view_annonce")
+     */
+    public function viewAnnonce(Request $request)
+    {
+        return $this->render('annonce/annonceView.html.twig');
+    }
 }

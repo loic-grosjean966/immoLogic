@@ -41,8 +41,8 @@ class AnnonceFormType extends AbstractType
             ->add('propertyType', ChoiceType::class, [
                 'label' => 'Appartement ou maison ?',
                 'choices' => [
-                    'Appartement' => true,
-                    'Maison' => false
+                    'Appartement' => 'Appartement',
+                    'Maison' => 'Maison'
                 ],
                 'constraints' => [
                     new NotBlank([
@@ -68,8 +68,8 @@ class AnnonceFormType extends AbstractType
             ->add('typeOfTransaction', ChoiceType::class, [
                 'label' => 'Plutôt location ou vente ?',
                 'choices' => [
-                    'location' => true,
-                    'vente' => false
+                    'location' => 'location',
+                    'vente' => 'vente'
                 ],
                 'constraints' => [
                     new NotBlank([
@@ -115,6 +115,7 @@ class AnnonceFormType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Annonce::class,
+            'novalidate' => 'novalidate'
         ]);
     }
 }
