@@ -46,7 +46,7 @@ class AnnonceController extends AbstractController
             $em->flush();
 
             // Message flash de type "success"
-            $this->addFlash('success', 'Article publié avec succès !');
+            $this->addFlash('success', 'Annonce publiée avec succès !');
 
             // Redirection de l'utilisateur vers la page détaillée de l'article tout nouvellement créé
             return $this->redirectToRoute('blog_publication_view', [

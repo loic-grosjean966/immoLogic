@@ -63,7 +63,13 @@ class Annonce
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $type;
+    private $typeOfTransaction;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $propertyType;
+
 
 public function getSlug(): ?string
 {
@@ -171,14 +177,26 @@ public function setSlug(string $slug): self
         return $this;
     }
 
-    public function getType(): ?string
+    public function getTypeOfTransaction(): ?string
     {
-        return $this->type;
+        return $this->typeOfTransaction;
     }
 
-    public function setType(string $type): self
+    public function setTypeOfTransaction(string $typeOfTransaction): self
     {
-        $this->type = $type;
+        $this->typeOfTransaction = $typeOfTransaction;
+
+        return $this;
+    }
+
+    public function getPropertyType(): ?string
+    {
+        return $this->propertyType;
+    }
+
+    public function setPropertyType(string $propertyType): self
+    {
+        $this->propertyType = $propertyType;
 
         return $this;
     }

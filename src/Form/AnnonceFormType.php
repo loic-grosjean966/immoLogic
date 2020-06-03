@@ -7,7 +7,6 @@ use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\SelectType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
@@ -39,6 +38,18 @@ class AnnonceFormType extends AbstractType
                     ]),
                 ]
             ])
+            ->add('propertyType', ChoiceType::class, [
+                'label' => 'Appartement ou maison ?',
+                'choices' => [
+                    'Appartement' => true,
+                    'Maison' => false
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Merci de renseigner un type de bien'
+                    ])
+                ]
+            ])
             ->add('description', CKEditorType::class, [
                 'label' => 'Description du bien',
                 'purify_html' => true,
@@ -54,8 +65,17 @@ class AnnonceFormType extends AbstractType
                     ]),
                 ]
             ])
-            ->add('type', SelectType::class, [
-                'label' => 'Plutôt location ou vente ?'
+            ->add('typeOfTransaction', ChoiceType::class, [
+                'label' => 'Plutôt location ou vente ?',
+                'choices' => [
+                    'location' => true,
+                    'vente' => false
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Merci de renseigner un type de transaction'
+                    ])
+                ]
             ])
             ->add('price', MoneyType::class, [
                 'divisor' => 100,
