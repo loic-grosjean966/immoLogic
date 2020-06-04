@@ -10,10 +10,21 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+        <style>
+            .banner{
+                background-image: url('{{ asset('images/banner.png') }}');
+                background-attachment: fixed;
+                height: 150px;
+                margin: 0;
+                padding: 0;  
+                }
+        </style>
+        {% endblock %}
     </head>
 
-    <body>
+    <body class="body">
+        <div class="banner row my-5"></div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark main-navbar">
 
         <ul class="navbar-nav mr-auto">
