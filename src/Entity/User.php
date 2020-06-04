@@ -58,9 +58,16 @@ class User implements UserInterface
     private $password;
 
     /**
+     * @ORM\Column(type="datetime")
+     */
+    private $registrationDate;
+
+    /**
      * 
      */
     private $plainPassword;
+
+    
 
     /**
      * @ORM\Column(type="json")
@@ -189,6 +196,18 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getRegistrationDate(): ?\DateTimeInterface
+    {
+        return $this->registrationDate;
+    }
+
+    public function setRegistrationDate(\DateTimeInterface $registrationDate): self
+    {
+        $this->registrationDate = $registrationDate;
+
+        return $this;
     }
 
     /**

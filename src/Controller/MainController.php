@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Recaptcha\RecaptchaValidator;
 use Symfony\Component\Form\FormError;
@@ -53,6 +54,16 @@ class MainController extends AbstractController
         return $this->render('appartment/appartmentSell.html.twig', [
             'controller_name' => 'MainController',
         ]);
+    }
+    /**
+     * Page de profil
+     *
+     * @Route("/mon-profil/", name="main_profil")
+     * @Security("is_granted('ROLE_USER')")
+     */
+    public function profil()
+    {
+        return $this->render('main/profil.html.twig');
     }
 
 }

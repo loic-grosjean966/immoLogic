@@ -7,7 +7,7 @@ body{
 
 /* Navbar principale */
 .main-navbar{
-    background-color: #633974 !important;
+    background-color: #F700FF !important;
 }
 
 .main-navbar .main-navbar-logo{
@@ -18,7 +18,7 @@ body{
 
 /* Classes génériques */
 .bg-black{
-    background-color: #633974;
+    background-color: #F700FF ;
 }
 
 
@@ -30,7 +30,7 @@ body{
 
 /* Menus paginations */
 .pagination .page-item .page-link{
-    background-color: #633974;
+    background-color: #F700FF ;
     color: #Ffffff;
 }
 
@@ -39,11 +39,11 @@ body{
 }
 
 .pagination .page-item.disabled .page-link, .pagination .page-item.active .page-link{
-    color: grey;
+    color: rgb(2, 2, 2);
 }
 
 .pagination .page-item a.page-link:hover{
-    background-color: #292929;
+    background-color: #000000;
 }
 
 
